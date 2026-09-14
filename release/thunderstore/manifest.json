@@ -1,0 +1,9 @@
+{
+  "name": "LwfPinnedSlots",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/KiyonakaNata/lwf-pinned-slots",
+  "description": "Pins item icons to fixed places in the inventory. R-Click a slot to pin or unpin, drag and drop to swap.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2305"
+  ]
+}

@@ -95,7 +95,7 @@ Change pins with R-Click and drag-and-drop in game, not in this file
 
 | | |
 |---|---|
-| Lazy Witch's Factory | Tested on **ver 0.27.0** |
+| Lazy Witch's Factory | Tested on **ver 0.29.1** |
 | BepInEx | Tested on **5.4.23.5** (any 5.4.x should work) |
 
 If a game update breaks this mod, that is the end of its life — remove it.

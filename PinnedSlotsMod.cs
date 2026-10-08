@@ -39,7 +39,7 @@ namespace LwfPinnedSlots
     {
         internal const string PluginGuid = "kiyonakanata.lwfpinnedslots";
         internal const string PluginName = "LWF Pinned Slots";
-        internal const string PluginVersion = "1.0.0";
+        internal const string PluginVersion = "1.0.1";
 
         // 本体のセル数（LWFParamLimits.INVENTORY_CELL_COUNT）。実際の数は DB から読むので、
         // ここは cfg の項目数を決めるだけ
@@ -76,10 +76,29 @@ namespace LwfPinnedSlots
             "Summon-Summoner"
         };
 
+        // 本体は 0.29.1 から、起動中に例外が出るとゲームごと起動を止める（エラー画面）。
+        // 本体の更新でパッチ先が消えても MOD だけ止まって起動は通るよう、全部を受け止める。
+        // 失敗したら当てた分も全部外し、素の所持品欄に戻す
         private void Awake()
         {
             Log = Logger;
+            try
+            {
+                Boot();
+            }
+            catch (Exception e)
+            {
+                Log.LogWarning("[boot] " + PluginName + " " + PluginVersion
+                    + " disabled (the game version may have changed): " + e);
+                Config.SettingChanged -= OnSettingChanged;
+                try { if (_harmony != null) { _harmony.UnpatchSelf(); } }
+                catch (Exception e2) { Log.LogWarning("[boot] unpatch failed: " + e2.Message); }
+                enabled = false;
+            }
+        }
 
+        private void Boot()
+        {
             Enabled = Config.Bind("1. General", "Enabled", true, "");
 
             // 既定は全て空（固定なし）。入れただけでは何も変わらず、右クリックで固定した席から効く

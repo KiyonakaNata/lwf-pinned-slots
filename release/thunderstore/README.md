@@ -26,4 +26,4 @@ Pins item icons to fixed places in the inventory of **Lazy Witch's Factory**.
 
 Settings: `BepInEx/config/kiyonakanata.lwfpinnedslots.cfg`. Full documentation: [GitHub](https://github.com/KiyonakaNata/lwf-pinned-slots).
 
-Tested on Lazy Witch's Factory **ver 0.27.0**. Unofficial mod, not supported by the developer.
+Tested on Lazy Witch's Factory **ver 0.29.1**. Unofficial mod, not supported by the developer.
